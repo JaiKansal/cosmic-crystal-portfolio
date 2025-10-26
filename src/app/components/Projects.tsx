@@ -13,10 +13,10 @@ export default function Projects({ data }: ProjectsProps) {
       <h2 className="text-2xl font-bold text-cyan-400 mb-6">
         Featured Projects
       </h2>
-      
+
       <div className="flex flex-col gap-6">
         {data.map((project, index) => (
-          <div 
+          <div
             key={index}
             className="bg-gray-800/50 p-4 rounded-lg"
           >

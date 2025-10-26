@@ -47,7 +47,7 @@ export default function Home() {
             className="font-bold text-2xl text-white cursor-pointer hover:text-cyan-400 transition-colors bg-transparent border-none"
             onClick={() => setActiveSection('home')}
           >
-            JAI KANSAL
+           JAI KANSAL
           </button>
           <div className="flex items-center gap-6 text-gray-300">
             <span className="hover:text-cyan-400 transition-colors cursor-pointer" data-target="experience">Experience</span>
