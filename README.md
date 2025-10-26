@@ -5,9 +5,7 @@
 
 A stunning 3D interactive portfolio website featuring a cosmic crystal theme with space elements. Built with Next.js, React Three Fiber, and Framer Motion for an immersive desktop experience, with a responsive 2D fallback for mobile devices.
 
-🌟 **Live Demo:** [View Portfolio](https://jaikansalportfolio.vercel.app)
-
-![Portfolio Preview](https://via.placeholder.com/800x400/0f172a/06b6d4?text=3D+Crystal+Portfolio)
+🌟 **Live Demo:** [View Portfolio](https://cosmic-crystal-portfolio.vercel.app/)
 
 ## Features
 
