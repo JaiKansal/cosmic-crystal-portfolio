@@ -10,13 +10,13 @@ export default function Contact() {
       <h2 className="text-2xl font-bold text-cyan-400 mb-6">
         Contact Me
       </h2>
-      
+
       <p className="text-gray-300 text-sm mb-4">
         Have a question or want to work together? Send me a message!
       </p>
 
-      <form 
-        action="https://formspree.io/f/YOUR_UNIQUE_ID" // <-- MAKE SURE YOU PASTED YOUR URL HERE
+      <form
+        action="https://formspree.io/f/myzbggzk" // <-- MAKE SURE YOU PASTED YOUR URL HERE
         method="POST"
         className="flex flex-col gap-4"
       >
@@ -27,7 +27,7 @@ export default function Contact() {
           <input
             type="text"
             id="name"
-            name="name" 
+            name="name"
             className="block w-full bg-gray-800/70 border border-gray-700 rounded-md p-2 text-gray-100
                        focus:ring-cyan-500 focus:border-cyan-500"
             placeholder="Jai Kansal"
@@ -42,7 +42,7 @@ export default function Contact() {
           <input
             type="email"
             id="email"
-            name="email" 
+            name="email"
             className="block w-full bg-gray-800/70 border border-gray-700 rounded-md p-2 text-gray-100
                        focus:ring-cyan-500 focus:border-cyan-500"
             placeholder="you@example.com"
@@ -56,7 +56,7 @@ export default function Contact() {
           </label>
           <textarea
             id="message"
-            name="message" 
+            name="message"
             rows={4}
             className="block w-full bg-gray-800/70 border border-gray-700 rounded-md p-2 text-gray-100
                        focus:ring-cyan-500 focus:border-cyan-500"
