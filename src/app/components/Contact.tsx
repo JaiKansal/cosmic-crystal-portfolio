@@ -6,7 +6,7 @@ import React from 'react';
 export default function Contact() {
   return (
     // --- THIS LINE IS UPDATED ---
-    <div className="glass-card w-full max-w-[500px] h-auto max-h-[60vh] p-4 sm:p-6 overflow-y-auto">
+    <div className="glass-card w-full sm:w-[600px] lg:w-[700px] max-w-full h-auto max-h-[60vh] p-4 sm:p-6 overflow-y-auto">
       <h2 className="text-2xl font-bold text-cyan-400 mb-6">
         Contact Me
       </h2>
