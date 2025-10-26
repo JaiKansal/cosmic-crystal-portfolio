@@ -1,0 +1,44 @@
+// app/components/Projects.tsx
+import React from 'react'
+import { projectData } from './data/projectData'; // Import data
+
+type ProjectsProps = {
+  data: typeof projectData;
+};
+
+export default function Projects({ data }: ProjectsProps) {
+  return (
+    // --- THIS LINE IS UPDATED ---
+    <div className="glass-card w-150 max-w-[500px] h-[60vh] max-h-[500px] p-6 overflow-y-auto">
+      <h2 className="text-2xl font-bold text-cyan-400 mb-6">
+        Featured Projects
+      </h2>
+      
+      <div className="flex flex-col gap-6">
+        {data.map((project, index) => (
+          <a 
+            key={index}
+            href="#" // Add GitHub link here
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gray-800/50 p-4 rounded-lg block hover:bg-gray-700/70 transition-all duration-300 group"
+          >
+            <h3 className="text-lg font-bold mb-2 group-hover:text-cyan-400 transition-colors">
+              {project.title}
+            </h3>
+            <p className="text-gray-300 text-sm mb-3">
+              {project.desc}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag, tIndex) => (
+                <span key={tIndex} className="bg-gray-900 text-cyan-300 text-xs font-medium px-3 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}

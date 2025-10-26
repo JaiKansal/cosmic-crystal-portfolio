@@ -1,65 +1,115 @@
-import Image from "next/image";
+// app/page.tsx
+"use client";
+
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import dynamic from 'next/dynamic'; // <-- 1. IMPORT DYNAMIC
+
+// --- 2. IMPORT Scene3D DYNAMICALLY ---
+// This tells Next.js to load the 3D scene in a separate file.
+const Scene3D = dynamic(() => import('./components/Scene3D'), {
+  ssr: false, // Never render this component on the server
+  loading: () => <div className="w-full h-full bg-gray-950" /> // Show a blank screen while it loads
+});
+
+// Import the hook and 2D components (these are small and fine)
+import { useIsMobile } from './hooks/useIsMobile';
+import Portfolio2D from './components/Portfolio2D';
+
+// Import the data
+import { experienceData } from './components/data/experienceData';
+import { projectData } from './components/data/projectData';
+import { skillsData } from './components/data/skillsData';
 
 export default function Home() {
+  const isMobile = useIsMobile();
+  const [isClient, setIsClient] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // --- THIS LOGIC IS NOW MUCH FASTER ---
+  // The 2D version is shown by default, and no 3D code is loaded.
+  if (!isClient || isMobile) {
+    return <Portfolio2D />;
+  }
+
+  // Only if we're on a desktop client will we load the 3D code.
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="w-full h-full relative">
+      {/* 3D Header */}
+      <header className="fixed top-0 left-0 w-full p-6 z-50">
+        <nav className="max-w-7xl mx-auto flex justify-between items-center">
+          <button
+            className="font-bold text-2xl text-white cursor-pointer hover:text-cyan-400 transition-colors bg-transparent border-none"
+            onClick={() => setActiveSection('home')}
+          >
+            JAI KANSAL
+          </button>
+          <div className="flex items-center gap-6 text-gray-300">
+            <span className="hover:text-cyan-400 transition-colors cursor-pointer" data-target="experience">Experience</span>
+            <span className="hover:text-cyan-400 transition-colors cursor-pointer" data-target="projects">Projects</span>
+            <span className="hover:text-cyan-400 transition-colors cursor-pointer" data-target="skills">Skills</span>
+            <span className="hover:text-cyan-400 transition-colors cursor-pointer" data-target="contact">Contact</span>
+            <a
+              href="/Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-cyan-500 text-gray-950 font-medium py-2 px-4 rounded-md hover:bg-cyan-400 transition-colors"
+            >
+              Resume
+            </a>
+          </div>
+        </nav>
+      </header>
+
+      {/* 3D Scene */}
+      <div className="absolute top-0 left-0 w-full h-full z-10">
+        <Scene3D
+          experienceData={experienceData}
+          projectData={projectData}
+          skillsData={skillsData}
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+      </div>
+
+      {/* 3D Footer */}
+      <footer className="fixed bottom-0 left-0 w-full p-6 z-50 flex flex-col items-center justify-center gap-4">
+        {/* Social Links */}
+        <div className="flex justify-center gap-6">
+          <a href="https://linkedin.com/in/jai-kansal-371738297" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors text-3xl">
+            <FaLinkedin />
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+          <a href="https://github.com/JaiKansal" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors text-3xl">
+            <FaGithub />
           </a>
         </div>
-      </main>
-    </div>
+
+        {/* Attribution */}
+        <div className="text-xs text-gray-600">
+          <a
+            href="https://sketchfab.com/3d-models/crystal-stone-rock-1ad829e2f464446fa4945562ab611255"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-cyan-500 transition-colors"
+          >
+            "Crystal stone (rock)" by GenEugene
+          </a>
+          <span> licensed under </span>
+          <a
+            href="http://creativecommons.org/licenses/by-nc/4.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-cyan-500 transition-colors"
+          >
+            CC BY-NC 4.0
+          </a>
+        </div>
+      </footer>
+    </main>
   );
 }
