@@ -125,13 +125,13 @@ Here is the process:
 
 ## 📜 License & Attribution
 
-The code for this template is licensed under the [MIT License](LICENSE.txt). (You can create this file and add your own license).
+### Code License
+This project is licensed under the [MIT License](LICENSE) - feel free to use, modify, and distribute the code.
 
-### Asset Attribution
+### 3D Asset Attribution
+The 3D crystal model used in this project has its own license:
 
-The 3D assets used in this project have their own licenses. The current model **CANNOT** be used for commercial purposes.
+* **Model:** ["Crystal stone (rock)"](https://sketchfab.com/3d-models/crystal-stone-rock-1ad829e2f464446fa4945562ab611255) by [GenEugene](https://sketchfab.com/geneugene)
+* **License:** [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/) (Non-Commercial)
 
-  * **Model:** ["Crystal stone (rock)"](https://sketchfab.com/3d-models/crystal-stone-rock-1ad829e2f464446fa4945562ab611255) by [GenEugene](https://sketchfab.com/geneugene).
-  * **License:** [CC BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/)
-
-This attribution is included in the site footer as required by the license.
+**Note:** If you fork this project for commercial use, you'll need to replace the crystal model with a commercially-licensed alternative. The attribution is included in the site footer as required.
