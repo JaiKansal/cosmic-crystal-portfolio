@@ -16,14 +16,11 @@ export default function Projects({ data }: ProjectsProps) {
       
       <div className="flex flex-col gap-6">
         {data.map((project, index) => (
-          <a 
+          <div 
             key={index}
-            href="#" // Add GitHub link here
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-gray-800/50 p-4 rounded-lg block hover:bg-gray-700/70 transition-all duration-300 group"
+            className="bg-gray-800/50 p-4 rounded-lg"
           >
-            <h3 className="text-lg font-bold mb-2 group-hover:text-cyan-400 transition-colors">
+            <h3 className="text-lg font-bold mb-2 text-white">
               {project.title}
             </h3>
             <p className="text-gray-300 text-sm mb-3">
@@ -36,7 +33,7 @@ export default function Projects({ data }: ProjectsProps) {
                 </span>
               ))}
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>
